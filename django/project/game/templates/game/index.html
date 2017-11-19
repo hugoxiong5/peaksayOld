@@ -1,0 +1,12 @@
+{% load static %}
+
+{% if list %}
+<ul>
+ {% for dialogue in list %}
+<li><a href="{% url 'game:detail' dialogue.id %}">{{ dialogue.title }}</a></li>
+ {% endfor %}
+</ul>
+{% else %}
+   <p>No dialogues are available.</p>
+{% endif %}
+

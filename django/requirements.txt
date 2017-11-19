@@ -1,0 +1,18 @@
+certifi==2017.7.27.1
+chardet==3.0.4
+defusedxml==0.5.0
+-e git+https://github.com/django/django.git@7cc155a04ce9579de3cdca59db9a4de11dc5eab9#egg=Django
+-e git+https://github.com/pennersr/django-allauth.git@6ae7102765b4342492a4a1aa268f1cf317246cc4#egg=django_allauth
+django-cors-headers==2.1.0
+-e git+https://github.com/encode/django-rest-framework.git@4eae43149f4d267bcb442a683bf146d647678fe6#egg=djangorestframework
+httpie==0.9.9
+idna==2.6
+oauthlib==2.0.6
+passgen==1.0.1
+pkg-resources==0.0.0
+Pygments==2.2.0
+python3-openid==3.1.0
+pytz==2017.3
+requests==2.18.4
+requests-oauthlib==0.8.0
+urllib3==1.22

@@ -1,0 +1,8 @@
+<h1>{{ dialogue.title }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% csrf_token %}
+{% for line in dialogue.lines.all %}
+<div>{{line.text}}</div>
+{% endfor %}
+
