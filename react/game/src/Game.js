@@ -5,20 +5,9 @@ import { TimerInput } from './TimerInput';
 const GameArea = ({ title, history, left, right, process }) => (
   <div>
     <h1>{title}</h1>
-     <h2>Dialogue</h2>
-     <table>
-     <tbody>
-     {left.map((d,i) => 
-       <tr key={i}><td>{d}</td><td>{right[i]}</td></tr>)}
-     </tbody>
-     </table>
      <h2>Your answers</h2>
-     <table>
-     <tbody>
      {history.map((d,i) => 
-       <tr key={i}><td>{left[i]}</td><td>{d}</td></tr>)}
-     </tbody>
-     </table>
+       <div key={i}>{d} { (d === left[i]) ? '✅' : `(❌ It should be "${left[i]}")`}</div>)}
   </div>
 )
 
@@ -45,7 +34,7 @@ export class Game extends React.Component {
     console.log('process', value, time);
     this.setState((prevState, props) => {
       return {
-        history: prevState.history.concat(`${value} (${time})`),
+        history: prevState.history.concat(`${value}`),
         showInput: false
       }
     });
@@ -57,7 +46,7 @@ export class Game extends React.Component {
   render() {
     return (
       <div className="game">
-        <header>Header</header>
+        <header><h1>Header</h1></header>
         <main>
         <GameArea title={this.state.title} history={this.state.history} left={this.state.left} right={this.state.right} showInput={this.state.showInput} /> 
         </main>
