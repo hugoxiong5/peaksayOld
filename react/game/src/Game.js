@@ -5,9 +5,8 @@ import { TimerInput } from './TimerInput';
 const GameArea = ({ title, history, left, right, process }) => (
   <div>
     <h1>{title}</h1>
-     <h2>Your answers</h2>
-     {history.map((d,i) => 
-       <div key={i}>{d} { (d === left[i]) ? '✅' : `(❌ It should be "${left[i]}")`}</div>)}
+     {history.map((d,i) =>( 
+       <div key={i}>{d}</div>))}
   </div>
 )
 
@@ -18,7 +17,8 @@ export class Game extends React.Component {
       title: props.title,
       left: props.lines.filter((d, i) => (!(i % 2) ? d: 0)),
       right: props.lines.filter((d, i) => ((i % 2) ? d: 0)),
-      history: [],
+      history: [props.lines[0]],
+      index: 1,
       showInput: true
     }
     this.end = this.end.bind(this);
@@ -33,13 +33,26 @@ export class Game extends React.Component {
   process(value, time) {
     console.log('process', value, time);
     this.setState((prevState, props) => {
+      let output =  `${value} (${this.state.right[this.state.index-1]})`;
+      let history = prevState.history.concat(output)
       return {
-        history: prevState.history.concat(`${value}`),
+        history: history,
         showInput: false
       }
     });
-    if(this.state.history.length < this.state.left.length - 1 ) {
-      setTimeout(() => { this.setState({showInput: true})}, 1000); 
+    if(this.state.index < this.state.right.length ) {
+      setTimeout(() => { 
+        this.setState((prevState, props) => {
+          let line = prevState.left[prevState.index];
+          let history = prevState.history.concat(line);
+          let index = prevState.index + 1;
+          return {
+            history: history,
+            index: index,
+            showInput: true
+          }
+        });
+      }, 1000); 
     }
   }
 
