@@ -1,3 +1,4 @@
 .landing {
   margin: 1em;
+  overflow-y: scroll;
 }
