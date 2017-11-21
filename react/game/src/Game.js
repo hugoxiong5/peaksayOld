@@ -18,12 +18,21 @@ export class Game extends React.Component {
       title: props.title,
       left: props.lines.filter((d, i) => (!(i % 2) ? d: 0)),
       right: props.lines.filter((d, i) => ((i % 2) ? d: 0)),
-      history: [props.lines[0]],
-      index: 1,
-      showInput: true
+      history: []
     }
     this.end = this.end.bind(this);
     this.process = this.process.bind(this);
+    this.normalize = this.normalize.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState((prevState, props) => {
+      return  {
+        history: prevState.history.concat(prevState.left[0]),
+        index: 1,
+        showInput: true
+      };
+    });
   }
 
   end(e) {
@@ -31,10 +40,15 @@ export class Game extends React.Component {
     document.location = "/";
   }
 
+  normalize(s) {
+    return s.toLocaleUpperCase().replace(/[^\w\s]|_/g, '').replace(/\s+/g, ' ');
+  }
+
   process(value, time) {
     console.log('process', value, time);
+    let answer = this.state.right[this.state.index-1];
     this.setState((prevState, props) => {
-      let output =  `${value} (${this.state.right[this.state.index-1]})`;
+      let output =  `${value} (${this.normalize(answer)})`;
       let history = prevState.history.concat(output)
       return {
         history: history,

@@ -34,20 +34,3 @@
   float: right;
 }
 
-ol {
-  margin: 1em;
-  padding: 1em;
-}
-
-table {
-  width: 80%;
-  border-collapse: collapse;
-  margin: 0.5rem;
-}
-
-td {
-  width: 40%;
-  border: 1px solid #CCC;
-  padding: 0.5rem;
-}
-
