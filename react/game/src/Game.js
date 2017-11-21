@@ -5,8 +5,9 @@ import { TimerInput } from './TimerInput';
 const GameArea = ({ title, history, left, right, process }) => (
   <div>
     <h1>{title}</h1>
-     {history.map((d,i) =>( 
-       <div key={i}>{d}</div>))}
+     {history.map((line,i) =>( 
+       <div className="chat" key={i}>
+         <div className={ ( i % 2)? 'left' : 'right'} >{ line }</div></div>)) }
   </div>
 )
 
