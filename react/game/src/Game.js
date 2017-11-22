@@ -41,7 +41,7 @@ export class Game extends React.Component {
   }
 
   normalize(s) {
-    return s.toLocaleUpperCase().replace(/[^\w\s]|_/g, '').replace(/\s+/g, ' ');
+    return s.toLocaleUpperCase().replace(/\s+/g, ' ');
   }
 
   process(value, time) {
