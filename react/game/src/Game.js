@@ -19,6 +19,7 @@ export class Game extends React.Component {
       title: props.title,
       left: props.lines.filter((d, i) => (!(i % 2) ? d: 0)),
       right: props.lines.filter((d, i) => ((i % 2) ? d: 0)),
+      energy: 50,
       history: []
     }
     this.end = this.end.bind(this);
@@ -76,7 +77,7 @@ export class Game extends React.Component {
     return (
       <div className="game">
         <header><h1>Header</h1>
-        <EnergyBar value="50"/>
+        <EnergyBar value={this.state.energy}/>
         </header>
         <main>
         <GameArea title={this.state.title} history={this.state.history} left={this.state.left} right={this.state.right} showInput={this.state.showInput} /> 
