@@ -19,6 +19,7 @@ export class Game extends React.Component {
       title: props.title,
       left: props.lines.filter((d, i) => (!(i % 2) ? d: 0)),
       right: props.lines.filter((d, i) => ((i % 2) ? d: 0)),
+      step: 10,
       energy: 50,
       history: []
     }
@@ -31,6 +32,7 @@ export class Game extends React.Component {
     this.setState((prevState, props) => {
       return  {
         history: prevState.history.concat(prevState.left[0]),
+        step: 50 / prevState.left.length,
         index: 1,
         showInput: true
       };
@@ -50,10 +52,22 @@ export class Game extends React.Component {
     console.log('process', value, time);
     let answer = this.state.right[this.state.index-1];
     this.setState((prevState, props) => {
+      let energy = prevState.energy;
+      let step = prevState.step;
+      if(this.normalize(value) === this.normalize(answer) ) {
+        energy += step;
+      }
+      else {
+        energy -= step;
+      }
+      if(energy < 0) {
+        energy = 0;
+      }
       let output =  `${value} (${this.normalize(answer)})`;
       let history = prevState.history.concat(output)
       return {
         history: history,
+        energy: energy,
         showInput: false
       }
     });
