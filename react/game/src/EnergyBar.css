@@ -1,0 +1,6 @@
+.energybar {
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    background: rgb(207, 77, 83);
+  }

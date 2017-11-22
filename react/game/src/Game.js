@@ -1,6 +1,7 @@
 import React from 'react';
 import './Game.css';
 import { TimerInput } from './TimerInput';
+import { EnergyBar } from './EnergyBar';
 
 const GameArea = ({ title, history, left, right, process }) => (
   <div>
@@ -74,7 +75,9 @@ export class Game extends React.Component {
   render() {
     return (
       <div className="game">
-        <header><h1>Header</h1></header>
+        <header><h1>Header</h1>
+        <EnergyBar value="50"/>
+        </header>
         <main>
         <GameArea title={this.state.title} history={this.state.history} left={this.state.left} right={this.state.right} showInput={this.state.showInput} /> 
         </main>
