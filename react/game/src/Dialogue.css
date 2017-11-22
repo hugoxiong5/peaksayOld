@@ -6,18 +6,19 @@
   margin: 1em;
 }
 
-.chat .left {
-  width: 80%;
-  margin: 0 0 0 0;
-  border: 1px solid #CCC;
-  border-radius: 5px;
+.chat div {
+  max-width: 80%;
+  width: fit-content;
   padding: 0.5em;
+  border-radius: 3px;
+}
+
+.chat .left {
+  margin: 0 0 0 0;
+  background: rgb(234, 234, 234);
 }
 
 .chat .right {
-  width: 80%;
   margin: 0 0 0 auto;
-  border: 1px solid #CCC;
-  border-radius: 5px;
-  padding: 0.5em;
+  background: rgb(93, 150, 212);
 }
